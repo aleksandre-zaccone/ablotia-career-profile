@@ -1,59 +1,29 @@
-# AblotiaCareerProfile
+# Ablotia Career Profile
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 19.2.25.
+An Angular-hosted professional portfolio for Aleksandre Ablotia. The application provides the deployable shell, while the animated career story and its local image assets are served from `public/legacy`.
 
-## Development server
-
-To start a local development server, run:
+## Run locally
 
 ```bash
-ng serve
+npm ci
+npm start
 ```
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
+Open `http://localhost:4200` after Angular starts.
 
-## Code scaffolding
-
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
+## Build
 
 ```bash
-ng generate component component-name
+npm run build
 ```
 
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
+The optimized site is created in `dist/ablotia-career-profile/browser`.
 
-```bash
-ng generate --help
-```
+## Publishing flow
 
-## Building
+The repository uses two long-lived branches:
 
-To build the project run:
+- `integration` is the branch for completed changes awaiting review.
+- `main` is the production branch.
 
-```bash
-ng build
-```
-
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
-
-## Running unit tests
-
-To execute unit tests with the [Karma](https://karma-runner.github.io) test runner, use the following command:
-
-```bash
-ng test
-```
-
-## Running end-to-end tests
-
-For end-to-end (e2e) testing, run:
-
-```bash
-ng e2e
-```
-
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
-
-## Additional Resources
-
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+A pull request from `integration` to `main` runs the build and creates a Firebase Hosting preview. Merging it runs the same build and deploys the result to the production Hosting site. Details are in [DEPLOYMENT.md](DEPLOYMENT.md).

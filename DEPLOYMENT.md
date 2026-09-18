@@ -1,17 +1,23 @@
-# Deployment
+# Firebase Hosting deployment
 
-The site is an Angular application. Its production build is written to `dist/ablotia-career-profile/browser`, and Firebase Hosting serves that directory.
+The production Firebase project is `ablotia-career-profile`. Firebase Hosting publishes the Angular build directory `dist/ablotia-career-profile/browser` according to `firebase.json`.
 
-## First-time Firebase setup
+## GitHub Actions setup
 
-1. Sign in with `firebase login`.
-2. Create the Firebase project with ID `ablotia-career-profile`.
-3. Enable Firebase Hosting for the project.
-4. Create a service account credential that can deploy Firebase Hosting.
-5. Add the credential JSON to the GitHub repository as the secret `FIREBASE_SERVICE_ACCOUNT_ABLOTIA_CAREER_PROFILE`.
+The GitHub repository contains the secret `FIREBASE_SERVICE_ACCOUNT_ABLOTIA_CAREER_PROFILE`. It stores the Firebase service-account JSON used only by the deployment workflow. The workflow is defined in `.github/workflows/firebase-hosting.yml`.
 
-## Deployment flow
+## Delivery flow
 
-1. Push changes to `integration`.
-2. Open a pull request from `integration` to `main`; GitHub Actions builds the app and deploys a Firebase Hosting preview.
-3. Merge the pull request; GitHub Actions builds the app again and deploys production Hosting.
+1. Commit and push changes to `integration`.
+2. Create or update a pull request from `integration` into `main`.
+3. GitHub Actions runs `npm ci` and `npm run build`, then publishes a Firebase Hosting preview for the pull request.
+4. Merge the pull request. The workflow runs again and deploys the validated build to production Hosting.
+
+## Local verification
+
+```bash
+npm ci
+npm run build
+```
+
+To deploy manually for an emergency, authenticate with the Firebase CLI and run `firebase deploy --only hosting --project ablotia-career-profile`. Normal releases should use the GitHub Actions workflow.
