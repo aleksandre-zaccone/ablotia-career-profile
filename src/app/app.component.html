@@ -1,0 +1,15 @@
+<main class="profile-shell" aria-label="Aleksandre Ablotia professional profile">
+  @if (!profileLoaded) {
+    <div class="loading" role="status" aria-live="polite">
+      <span class="loading__mark">AA</span>
+      <span>Loading Aleksandre Ablotia’s profile…</span>
+    </div>
+  }
+
+  <iframe
+    class="profile-shell__frame"
+    src="legacy/Career_Story.html"
+    title="Aleksandre Ablotia professional profile"
+    (load)="onProfileLoad()">
+  </iframe>
+</main>

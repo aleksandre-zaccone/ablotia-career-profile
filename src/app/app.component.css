@@ -1,0 +1,38 @@
+:host {
+  display: block;
+  min-height: 100dvh;
+}
+
+.profile-shell {
+  min-height: 100dvh;
+  background: #101314;
+}
+
+.profile-shell__frame {
+  display: block;
+  width: 100%;
+  min-height: 100dvh;
+  border: 0;
+  background: #101314;
+}
+
+.loading {
+  position: fixed;
+  z-index: 1;
+  inset: 0;
+  display: grid;
+  place-content: center;
+  gap: 1rem;
+  color: #f4f0e9;
+  background: #101314;
+  font: 0.75rem/1.5 ui-monospace, SFMono-Regular, Menlo, monospace;
+  letter-spacing: 0.08em;
+  text-align: center;
+  text-transform: uppercase;
+}
+
+.loading__mark {
+  color: #a998d4;
+  font: 3rem/1 Georgia, serif;
+  letter-spacing: -0.08em;
+}
